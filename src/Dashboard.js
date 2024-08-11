@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { subDays, startOfMonth, endOfMonth, format } from 'date-fns';
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -29,14 +29,12 @@ const Dashboard = () => {
         <option value="LAST_30_DAYS">Last 90 days</option>
         <option value="CURRENT_MONTH">Current month</option>
       </select>
-      <LineChart width={600} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="value" stroke="#8884d8" />
-      </LineChart>
+      {charts.map((chart, index) => (
+        <div key={index}>
+          <h3>{chart}</h3>
+          {renderChart(chart)}
+        </div>
+      ))}
     </div>
   );
 };

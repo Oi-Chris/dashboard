@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from './Dashboard';
+import DashboardContainer from './DashboardContainer';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
 
       </header>
 
-      <Dashboard />
+     {/* <Dashboard /> */}
+     <DashboardContainer />
     </div>
   );
 }
